@@ -13,6 +13,7 @@ import {
 
 import { Button, FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
 
+
 const renderField = ({ placeholder, input: { onChange, ...restInput }, label, type, meta: { touched, error, warning }}) => {
   return <View>
     <FormInput onChangeText={onChange} {...restInput} placeholder={placeholder} shake={(touched && error) ? true : false} />
@@ -25,10 +26,6 @@ class LoginForm extends Component {
     super(props)
   }
 
-  submit = values => {
-    console.log(values)
-  }
-
   render() {
     const { handleSubmit, valid, email, password, pristine, submitting } = this.props
     const { container, button, input } = styles;
@@ -38,12 +35,12 @@ class LoginForm extends Component {
       <Field name="email" component={renderField} placeholder="test@test.com" />
 
       <FormLabel>Password:</FormLabel>
-      <Field name="password" component={renderField}  placeholder="password"/>
+      <Field name="password" component={renderField}  placeholder="Password"/>
 
       <Button
         raised
         disabled={pristine || submitting} 
-        onPress={handleSubmit(this.submit)}
+        onPress={handleSubmit}
         buttonStyle={button}
         textStyle={{textAlign: 'center'}}
         title={`Login`}
@@ -54,5 +51,5 @@ class LoginForm extends Component {
 
 export default reduxForm({
   form: 'login',       // a unique identifier for this form
-  validate,             // validation function given to redux-form
+  validate,            // validation function given to redux-form
 })(LoginForm)

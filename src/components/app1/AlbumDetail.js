@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, Image, Linking } from 'react-native';
-import { Button } from './Button'
+import { Button } from '../Button'
 
 export default class AlbumDetail extends Component {
   constructor(props) {

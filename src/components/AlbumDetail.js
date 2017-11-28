@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
-import { Text, View, Button, Image } from 'react-native';
+import { Text, View, Image, Linking } from 'react-native';
+import { Button } from './Button'
 
 export default class AlbumDetail extends Component {
   constructor(props) {
     super(props);
-    this.onPressHandler = this.onPressHandler.bind(this)
   }
 
-  onPressHandler = (album) => {
-    console.log(album.title);
-    // "title": "Fearless",
-    // "artist": "Taylor Swift",
-    // "url": "https://www.amazon.com/Fearless-Enhanced-Taylor-Swift/dp/B001EYGOEM",
-    // "image": "https://images-na.ssl-images-amazon.com/images/I/51qmhXWZBxL.jpg",
-    // "thumbnail_image": "https://i.imgur.com/K3KJ3w4h.jpg"
+  _onPressHandler = (album) => {
+    Linking.openURL(album.url)
   };
 
   render () {
@@ -30,7 +25,7 @@ export default class AlbumDetail extends Component {
           </View>
         </View>
         <Image style={image} source={{uri:album.image}} />
-        <Button onPress={() => this.onPressHandler(album)} title="Buy" color="#841584" />
+        <Button onPress={ () => this._onPressHandler(album) }>Buy Now</Button>
       </View>
     );
   }
@@ -39,9 +34,9 @@ export default class AlbumDetail extends Component {
 const styles = {
   card: {
     marginBottom: 15,
-    borderBottomWidth: 1,
-    paddingBottom: 1,
-    borderColor: 'gray'
+    paddingBottom: 2,
+    borderColor: '#ccc',
+    borderBottomWidth: 1
   },
   title:{
     padding: 10,

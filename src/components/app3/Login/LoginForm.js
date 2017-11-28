@@ -4,15 +4,8 @@ import { Field, reduxForm } from 'redux-form'
 import { validate } from './validation'
 import styles from './styles'
 
-import {
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View
-} from 'react-native'
-
+import { View } from 'react-native'
 import { Button, FormLabel, FormInput, FormValidationMessage } from 'react-native-elements';
-
 
 const renderField = ({ placeholder, input: { onChange, ...restInput }, label, type, meta: { touched, error, warning }}) => {
   return <View>
